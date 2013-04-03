@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="true" xmlns:views="views.*"
+				width="{data.width}"
+				height="{data.height}"
+				x="@{data.x}"
+				y="@{data.y}"
+				scaleX="{data.scaleX}"
+				scaleY="{data.scaleY}"
+				rotation="{data.rotation}"
+				mouseDown="itemrenderer1_mouseDownHandler(event)"
+				mouseUp="itemrenderer1_mouseUpHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import vo.QuadVO;
+			
+			protected function itemrenderer1_mouseDownHandler(event:MouseEvent):void {
+				event.stopImmediatePropagation();
+				this.startDrag();
+			}
+			
+			protected function itemrenderer1_mouseUpHandler(event:MouseEvent):void {
+				this.stopDrag();
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<views:QuadView quad="{data as QuadVO}"/>
+	
+</s:ItemRenderer>

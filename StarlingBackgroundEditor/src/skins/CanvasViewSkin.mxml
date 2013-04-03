@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:components="components.*"
+		clipAndEnableScrolling="true">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("views.CanvasView")]
+	</fx:Metadata>
+	
+	<components:Checker top="0" left="0" bottom="0" right="0"
+						minWidth="0" minHeight="0"/>
+	<s:Group id="canvasGroup" top="0" bottom="0" left="0" right="0">
+		
+		<s:Rect top="0" left="0" width="{hostComponent.quadModel.canvasWidth}"
+				height="{hostComponent.quadModel.canvasHeight}">
+			<s:stroke>
+				<s:SolidColorStroke color="0x000000"/>
+			</s:stroke>
+			<s:fill>
+				<s:SolidColor color="0x000000" alpha="0.1"/>
+			</s:fill>
+		</s:Rect>
+		<s:DataGroup dataProvider="{hostComponent.quadModel.quads}"
+					 itemRenderer="components.QuadImageItemRenderer">
+			<s:layout>
+				<s:BasicLayout/>
+			</s:layout>
+		</s:DataGroup>
+	</s:Group>
+</s:Skin>

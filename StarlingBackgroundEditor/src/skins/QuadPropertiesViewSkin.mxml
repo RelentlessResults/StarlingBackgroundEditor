@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("views.QuadPropertiesView")]
+	</fx:Metadata>
+	
+	<!-- SkinParts
+	name=yPositionSpinner, type=spark.components.Spinner, required=false
+	name=moveUpButton, type=spark.components.Button, required=false
+	name=xPositionSpinner, type=spark.components.Spinner, required=false
+	name=moveDownButton, type=spark.components.Button, required=false
+	name=widthSpinner, type=spark.components.Spinner, required=false
+	name=rotationSpinner, type=spark.components.Spinner, required=false
+	name=labelTextInput, type=spark.components.TextInput, required=false
+	name=heightSpinner, type=spark.components.Spinner, required=false
+	-->
+	<s:states>
+		<s:State name="noSelection"/>
+		<s:State name="quadSelected"/>
+	</s:states>
+	
+	<s:Rect top="0" bottom="0" left="0" right="0">
+		<s:fill>
+			<s:SolidColor color="0xFFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:VGroup>
+		
+		
+		
+		<s:Form visible="false" visible.quadSelected="true">
+			
+			<s:FormItem label="Sprite name">
+				<s:TextInput id="labelTextInput" text="@{hostComponent.quad.label}"/>
+			</s:FormItem>
+			
+			<s:FormItem label="X">
+				<s:NumericStepper id="xPositionSpinner" value="@{hostComponent.quad.x}"
+								  maximum="99999"/>
+			</s:FormItem>
+			<s:FormItem label="Y">
+				<s:NumericStepper  id="yPositionSpinner" value="@{hostComponent.quad.y}"
+								   maximum="99999"/>
+			</s:FormItem>
+			
+			<s:FormItem label="Width">
+				<s:NumericStepper id="widthSpinner" value="@{hostComponent.quad.width}"
+								  maximum="99999"/>
+			</s:FormItem>
+			<s:FormItem label="Height">
+				<s:NumericStepper id="heightSpinner" value="@{hostComponent.quad.height}"
+								  maximum="99999"/>
+			</s:FormItem>
+			
+			<s:FormItem label="Rotation">
+				<s:NumericStepper id="rotationSpinner" value="@{hostComponent.quad.rotation}"
+								  maximum="99999"/>
+			</s:FormItem>
+	
+		</s:Form>
+		
+		<s:HGroup visible="false" visible.quadSelected="true">
+			<s:Button id="moveUpButton" label="Up"/>
+			<s:Button id="moveDownButton" label="Down"/>
+		</s:HGroup>
+		
+		<s:HGroup visible="false" visible.quadSelected="true">
+			<s:Button id="moveTopButton" label="Top"/>
+			<s:Button id="moveBottomButton" label="Bottom"/>
+		</s:HGroup>
+	</s:VGroup>
+	
+	
+</s:Skin>

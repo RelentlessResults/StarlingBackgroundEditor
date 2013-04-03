@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Metadata>
+		[HostComponent("views.QuadView")]
+	</fx:Metadata>
+	
+	<s:states>
+		<s:State name="selected" />
+		<s:State name="unselected" />
+	</s:states>
+	
+	<s:Image source="{hostComponent.quad.imageURL}"/>
+	
+	<s:Rect includeIn="selected" top="0" left="0" bottom="0" right="0">
+		<s:stroke>
+			<s:SolidColorStroke color="0xFFFF00"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="0xFFFF00" alpha="0.1"/>
+		</s:fill>
+	</s:Rect> 
+	<s:Label text="{hostComponent.quad.label}" includeIn="selected"
+			 rotation="{-hostComponent.quad.rotation}" color="0xFFFF00"/>
+</s:Skin>

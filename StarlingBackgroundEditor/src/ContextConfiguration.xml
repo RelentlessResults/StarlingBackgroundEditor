@@ -5,5 +5,14 @@
     xsi:schemaLocation="http://www.spicefactory.org/parsley 
         http://www.spicefactory.org/parsley/schema/2.3/parsley-core.xsd">
     
-	
+    <!--  models -->
+    <object type="models.QuadModel"/>
+    <object type="models.UIModel"/>
+    
+    <!--  commands -->
+    <map-command type="commands.CreateQuadCommand"/>
+    <map-command type="commands.LoadLevelCommand"/>
+    <map-command type="commands.MoveQuadDepthCommand"/>
+    <map-command type="commands.SaveLevelCommand"/>
+    
 </objects>

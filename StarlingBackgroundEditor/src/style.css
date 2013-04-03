@@ -1,0 +1,20 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace views "views.*";
+@namespace skins "skins.*";
+
+views|QuadView {
+	skinClass:ClassReference("skins.QuadViewSkin");
+}
+
+views|QuadPropertiesView {
+	skinClass: ClassReference("skins.QuadPropertiesViewSkin");
+}
+
+views|CanvasView {
+	skinClass: ClassReference("skins.CanvasViewSkin");
+}
+
+views|QuadListView {
+	skinClass: ClassReference("skins.QuadListViewSkin");
+}

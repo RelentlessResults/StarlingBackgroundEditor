@@ -2,11 +2,54 @@
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 					   xmlns:s="library://ns.adobe.com/flex/spark" 
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
-					   xmlns:parsley="http://www.spicefactory.org/parsley">
+					   xmlns:parsley="http://www.spicefactory.org/parsley"
+					   xmlns:views="views.*" keyDown="windowedapplication1_keyDownHandler(event)"
+					   keyUp="windowedapplication1_keyUpHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import commands.CreateQuadCommand;
+			import commands.LoadLevelCommand;
+			import commands.MoveQuadDepthCommand;
+			import commands.SaveLevelCommand;
+			
+			import models.UIModel;
+			
+			private var createQuadCommand:CreateQuadCommand;
+			private var loadLevelCommand:LoadLevelCommand;
+			private var moveQuadDeppthCommand:MoveQuadDepthCommand;
+			private var saveLevelCommand:SaveLevelCommand;
+			
+			
+			[Inject]
+			public var uiModel:UIModel;
+			
+			protected function windowedapplication1_keyDownHandler(event:KeyboardEvent):void {
+				if (event.keyCode == Keyboard.SPACE) {
+					uiModel.setIsPanning(true);
+				}
+			}
+			
+			protected function windowedapplication1_keyUpHandler(event:KeyboardEvent):void {
+				if (event.keyCode == Keyboard.SPACE) {
+					uiModel.setIsPanning(false);
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Style source="style.css"/>
+	
 	<fx:Declarations>
 		<parsley:ContextBuilder>
 			<parsley:ViewSettings autoremoveComponents="false"/>
 			<parsley:XmlConfig file="ContextConfiguration.xml"/>
 		</parsley:ContextBuilder>
+		<parsley:Configure/>
 	</fx:Declarations>
+	
+	<views:QuadListView top="0" left="0" width="200" bottom="0"/>
+	<views:CanvasView top="0" left="200" right="200" bottom="0"
+					  minWidth="0" minHeight="0"/>
+	<views:QuadPropertiesView top="0" bottom="0" right="0" width="200"/>
+	
 </s:WindowedApplication>
