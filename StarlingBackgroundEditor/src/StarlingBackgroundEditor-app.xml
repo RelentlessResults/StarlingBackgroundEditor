@@ -3,7 +3,7 @@
 
 <!-- Adobe AIR Application Descriptor File Template.
 
-	Specifies parameters for identifying, installing, and launching AIR applications.
+	Specifies parameters for identifying, installing, and launching AIR applications. 
 
 	xmlns - The Adobe AIR namespace: http://ns.adobe.com/air/application/3.1
 			The last segment of the namespace specifies the version 
