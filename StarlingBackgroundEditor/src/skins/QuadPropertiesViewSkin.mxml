@@ -60,6 +60,17 @@
 				<s:NumericStepper id="rotationSpinner" value="@{hostComponent.quad.rotation}"
 								  maximum="99999"/>
 			</s:FormItem>
+			
+			<s:FormItem label="Alphas">
+				<s:NumericStepper  value="@{hostComponent.quad.alphaA}"
+								  minimum="0" stepSize="0.05" maximum="1"/>
+				<s:NumericStepper value="@{hostComponent.quad.alphaB}"
+								  minimum="0" stepSize="0.05" maximum="1"/>
+				<s:NumericStepper value="@{hostComponent.quad.alphaC}"
+								  minimum="0" stepSize="0.05" maximum="1"/>
+				<s:NumericStepper value="@{hostComponent.quad.alphaD}"
+								  minimum="0" stepSize="0.05" maximum="1"/>
+			</s:FormItem>
 	
 		</s:Form>
 		

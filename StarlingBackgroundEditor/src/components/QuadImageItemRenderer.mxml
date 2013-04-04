@@ -5,10 +5,8 @@
 				autoDrawBackground="true" xmlns:views="views.*"
 				width="{data.width}"
 				height="{data.height}"
-				x="@{data.x}"
-				y="@{data.y}"
-				scaleX="{data.scaleX}"
-				scaleY="{data.scaleY}"
+				x="{data.x}"
+				y="{data.y}"
 				rotation="{data.rotation}"
 				mouseDown="itemrenderer1_mouseDownHandler(event)"
 				mouseUp="itemrenderer1_mouseUpHandler(event)">
@@ -22,12 +20,16 @@
 			}
 			
 			protected function itemrenderer1_mouseUpHandler(event:MouseEvent):void {
+				var pos:Point = new Point(this.x, this.y);
+				data.x = pos.x;
+				data.y = pos.y;
 				this.stopDrag();
 			}
 			
 		]]>
 	</fx:Script>
 	
-	<views:QuadView quad="{data as QuadVO}"/>
+	<views:QuadView quad="{data as QuadVO}"
+					top="0" left="0" right="0" bottom="0"/>
 	
 </s:ItemRenderer>

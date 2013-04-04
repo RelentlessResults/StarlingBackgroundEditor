@@ -8,6 +8,8 @@
 	<fx:Script>
 		<![CDATA[
 			import commands.CreateQuadCommand;
+			import commands.DeleteQuadCommand;
+			import commands.DuplicateQuadCommand;
 			import commands.LoadLevelCommand;
 			import commands.MoveQuadDepthCommand;
 			import commands.SaveLevelCommand;
@@ -15,8 +17,11 @@
 			import models.UIModel;
 			
 			private var createQuadCommand:CreateQuadCommand;
-			private var loadLevelCommand:LoadLevelCommand;
+			private var deleteQuadCommand:DeleteQuadCommand;
+			private var duplicateQuadCommand:DuplicateQuadCommand;
 			private var moveQuadDeppthCommand:MoveQuadDepthCommand;
+			
+			private var loadLevelCommand:LoadLevelCommand;
 			private var saveLevelCommand:SaveLevelCommand;
 			
 			

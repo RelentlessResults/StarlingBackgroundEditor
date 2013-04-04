@@ -8,11 +8,16 @@
     <!--  models -->
     <object type="models.QuadModel"/>
     <object type="models.UIModel"/>
+    <object type="models.SaveModel"/>
     
     <!--  commands -->
     <map-command type="commands.CreateQuadCommand"/>
+    <map-command type="commands.DeleteQuadCommand"/>
+    <map-command type="commands.DuplicateQuadCommand"/>
+    
     <map-command type="commands.LoadLevelCommand"/>
-    <map-command type="commands.MoveQuadDepthCommand"/>
     <map-command type="commands.SaveLevelCommand"/>
+    
+    <map-command type="commands.MoveQuadDepthCommand"/>
     
 </objects>

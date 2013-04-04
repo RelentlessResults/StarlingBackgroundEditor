@@ -21,6 +21,9 @@ package models {
 		[Bindable]
 		public var canvasHeight:Number = 2048;
 		
+		[Bindable]
+		public var zoomLevel:Number = 1;
+		
 		public function get quads():ArrayCollection {
 			return _quads;
 		}

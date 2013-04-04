@@ -26,10 +26,9 @@ package commands {
 			newVO = new QuadVO;
 			newVO.label = msg.file.name;
 			newVO.imageURL = msg.file.url;
-			newVO.scaleX = 1;
-			newVO.scaleY = 1;
 			newVO.x = 0;
 			newVO.y = 0;
+			newVO.rotation = 0;
 			loader = new Loader()
 			loader.load(new URLRequest(newVO.imageURL), new LoaderContext(false, null, null));
 			loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, handleIOError);

@@ -6,15 +6,17 @@ package vo {
 		public var label:String;
 		public var imageURL:String;
 		
-		public var x:Number;
-		public var y:Number;
+		public var x:Number = 0;
+		public var y:Number = 0;
 		
-		public var width:Number;
-		public var height:Number;
+		public var width:Number = 128;
+		public var height:Number = 128;
 		
-		public var scaleX:Number;
-		public var scaleY:Number;
+		public var rotation:Number = 0;
 		
-		public var rotation:Number;
+		public var alphaA:Number = 1;
+		public var alphaB:Number = 1;
+		public var alphaC:Number = 1;
+		public var alphaD:Number = 1;
 	}
 }

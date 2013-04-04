@@ -2,13 +2,17 @@ package messages {
 	
 	public class SaveLevelMessage {
 		
-		private var _path:String;
+		public static const SAVE_AS_NEW:String = "saveAsNew";
+		public static const SAVE_EXISTING:String = "saveExisting";
 		
-		public function get path():String {
-			return _path;
+		private var _type:String;
+		
+		public function get type():String {
+			return _type;
 		}
-		public function SaveLevelMessage(path:String) {
-			_path = path;
+		
+		public function SaveLevelMessage(type:String) {
+			_type = type;
 		}
 	}
 }

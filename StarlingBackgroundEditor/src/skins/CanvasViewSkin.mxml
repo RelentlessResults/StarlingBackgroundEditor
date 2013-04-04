@@ -13,8 +13,9 @@
 						minWidth="0" minHeight="0"/>
 	<s:Group id="canvasGroup" top="0" bottom="0" left="0" right="0">
 		
-		<s:Rect top="0" left="0" width="{hostComponent.quadModel.canvasWidth}"
-				height="{hostComponent.quadModel.canvasHeight}">
+		<s:Rect top="0" left="0"
+				width="{hostComponent.quadModel.canvasWidth/hostComponent.quadModel.zoomLevel}"
+				height="{hostComponent.quadModel.canvasHeight/hostComponent.quadModel.zoomLevel}">
 			<s:stroke>
 				<s:SolidColorStroke color="0x000000"/>
 			</s:stroke>
@@ -23,7 +24,10 @@
 			</s:fill>
 		</s:Rect>
 		<s:DataGroup dataProvider="{hostComponent.quadModel.quads}"
-					 itemRenderer="components.QuadImageItemRenderer">
+					 itemRenderer="components.QuadImageItemRenderer"
+					 id="dataGroup"
+					 scaleX="{1.0/hostComponent.quadModel.zoomLevel}"
+					 scaleY="{dataGroup.scaleX}">
 			<s:layout>
 				<s:BasicLayout/>
 			</s:layout>

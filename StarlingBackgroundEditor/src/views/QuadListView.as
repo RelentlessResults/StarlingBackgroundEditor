@@ -14,8 +14,11 @@ package views {
 	import messages.CreateQuadMessage;
 	import messages.DeleteQuadMessage;
 	import messages.DuplicateQuadMessage;
+	import messages.LoadLevelMessage;
+	import messages.SaveLevelMessage;
 	
 	import models.QuadModel;
+	import models.SaveModel;
 	
 	import org.spicefactory.parsley.view.Configure;
 	
@@ -25,6 +28,13 @@ package views {
 		
 		[SkinPart]
 		public var list:List;
+		
+		[SkinPart]
+		public var openButton:Button;
+		[SkinPart]
+		public var saveButton:Button;
+		[SkinPart]
+		public var saveAsButton:Button;
 		
 		[SkinPart]
 		public var addQuadButton:Button;
@@ -41,6 +51,10 @@ package views {
 		[Bindable]
 		[Inject]
 		public var quadModel:QuadModel;
+		
+		[Bindable]
+		[Inject]
+		public var saveModel:SaveModel;
 		
 		public function QuadListView() {
 			super();
@@ -64,7 +78,25 @@ package views {
 				deleteQuadButton.addEventListener(MouseEvent.CLICK, handleDeleteQuadClick);
 			} else if (instance == duplicateQuadButton) {
 				duplicateQuadButton.addEventListener(MouseEvent.CLICK, handleDuplicateQuadClick);
+			} else if (instance == openButton) {
+				openButton.addEventListener(MouseEvent.CLICK, handleOpenClick);
+			} else if (instance == saveButton) {
+				saveButton.addEventListener(MouseEvent.CLICK, handleSaveClick);
+			} else if (instance == saveAsButton) {
+				saveAsButton.addEventListener(MouseEvent.CLICK, handleSaveAsClick);
 			}
+		}
+		
+		protected function handleSaveAsClick(event:MouseEvent):void {
+			dispatch(new SaveLevelMessage(SaveLevelMessage.SAVE_AS_NEW));
+		}
+		
+		protected function handleSaveClick(event:MouseEvent):void {
+			dispatch(new SaveLevelMessage(SaveLevelMessage.SAVE_EXISTING));
+		}
+		
+		protected function handleOpenClick(event:MouseEvent):void {
+			dispatch(new LoadLevelMessage());
 		}
 		
 		protected override function partRemoved(partName:String, instance:Object):void {
@@ -75,7 +107,13 @@ package views {
 			} else if (instance == deleteQuadButton) {
 				deleteQuadButton.removeEventListener(MouseEvent.CLICK, handleDeleteQuadClick);
 			} else if (instance == duplicateQuadButton) {
-				duplicateQuadButton.addEventListener(MouseEvent.CLICK, handleDuplicateQuadClick);
+				duplicateQuadButton.removeEventListener(MouseEvent.CLICK, handleDuplicateQuadClick);
+			} else if (instance == openButton) {
+				openButton.removeEventListener(MouseEvent.CLICK, handleOpenClick);
+			} else if (instance == saveButton) {
+				saveButton.removeEventListener(MouseEvent.CLICK, handleSaveClick);
+			} else if (instance == saveAsButton) {
+				saveAsButton.removeEventListener(MouseEvent.CLICK, handleSaveAsClick);
 			}
 			super.partRemoved(partName, instance);
 		}

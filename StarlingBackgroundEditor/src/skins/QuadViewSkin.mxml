@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
-		xmlns:mx="library://ns.adobe.com/flex/mx">
+		xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="components.*">
 	
 	<fx:Metadata>
 		[HostComponent("views.QuadView")]
 	</fx:Metadata>
+	<fx:Script>
+		<![CDATA[
+			import mx.graphics.BitmapSmoothingQuality;
+		]]>
+	</fx:Script>
 	
 	<s:states>
 		<s:State name="selected" />
 		<s:State name="unselected" />
 	</s:states>
 	
-	<s:Image source="{hostComponent.quad.imageURL}"/>
+	<s:Image source="{hostComponent.quad.imageURL}"
+			 minWidth="0" minHeight="0"
+			 id="image"
+			 top="0" left="0" bottom="0" right="0"
+			 smooth="true"  scaleMode="stretch"
+			 smoothingQuality="{BitmapSmoothingQuality.HIGH}"
+			 mask="{alphaQuad}" cacheAsBitmap="true"/>
+	
+	<components:QuadAlpha top="0" left="0" bottom="0" right="0"
+						  id="alphaQuad" cacheAsBitmap="true"
+						  alphaA="{hostComponent.quad.alphaA}"
+						  alphaB="{hostComponent.quad.alphaB}"
+						  alphaC="{hostComponent.quad.alphaC}"
+						  alphaD="{hostComponent.quad.alphaD}"/>
 	
 	<s:Rect includeIn="selected" top="0" left="0" bottom="0" right="0">
 		<s:stroke>
