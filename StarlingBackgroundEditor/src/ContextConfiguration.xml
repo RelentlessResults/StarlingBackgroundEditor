@@ -14,6 +14,7 @@
     <map-command type="commands.CreateQuadCommand"/>
     <map-command type="commands.DeleteQuadCommand"/>
     <map-command type="commands.DuplicateQuadCommand"/>
+    <map-command type="commands.ExportLevelCommand"/>
     
     <map-command type="commands.LoadLevelCommand"/>
     <map-command type="commands.SaveLevelCommand"/>

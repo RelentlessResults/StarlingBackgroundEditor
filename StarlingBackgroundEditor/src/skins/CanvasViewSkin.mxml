@@ -9,6 +9,19 @@
 		[HostComponent("views.CanvasView")]
 	</fx:Metadata>
 	
+	<fx:Script>
+		<![CDATA[
+			import components.QuadImageItemRenderer;
+			
+			import models.UIModel;
+			public function getQuadItemRenderer(model:UIModel):ClassFactory {
+				var result:ClassFactory = new ClassFactory(QuadImageItemRenderer);
+				result.properties = {uiModel:model};
+				return result;
+			}
+		]]>
+	</fx:Script>
+	
 	<components:Checker top="0" left="0" bottom="0" right="0"
 						minWidth="0" minHeight="0"/>
 	<s:Group id="canvasGroup" top="0" bottom="0" left="0" right="0">
@@ -24,7 +37,7 @@
 			</s:fill>
 		</s:Rect>
 		<s:DataGroup dataProvider="{hostComponent.quadModel.quads}"
-					 itemRenderer="components.QuadImageItemRenderer"
+					 itemRenderer="{getQuadItemRenderer(hostComponent.uiModel)}"
 					 id="dataGroup"
 					 scaleX="{1.0/hostComponent.quadModel.zoomLevel}"
 					 scaleY="{dataGroup.scaleX}">

@@ -5,6 +5,7 @@ package views {
 	import spark.components.supportClasses.SkinnableComponent;
 	
 	import models.QuadModel;
+	import models.UIModel;
 	
 	import org.spicefactory.parsley.view.Configure;
 	
@@ -21,6 +22,9 @@ package views {
 		
 		[Inject]
 		public var levelModel:QuadModel;
+		
+		[Inject]
+		public var uiModel:UIModel;
 		
 		public function QuadView() {
 			super();
@@ -44,10 +48,12 @@ package views {
 		
 		public override function initialize():void {
 			super.initialize();
-			addEventListener(MouseEvent.CLICK, handleClick);
+			addEventListener(MouseEvent.MOUSE_DOWN, handleDown);
 		}
 		
-		protected function handleClick(event:MouseEvent):void {
+		protected function handleDown(event:MouseEvent):void {
+			if (uiModel.isPanning)
+				return;
 			levelModel.setSelectedQuad(quad);
 		}
 		

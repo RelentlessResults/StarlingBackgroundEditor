@@ -3,13 +3,17 @@
 					   xmlns:s="library://ns.adobe.com/flex/spark" 
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
 					   xmlns:parsley="http://www.spicefactory.org/parsley"
-					   xmlns:views="views.*" keyDown="windowedapplication1_keyDownHandler(event)"
-					   keyUp="windowedapplication1_keyUpHandler(event)">
+					   xmlns:views="views.*" 
+					   initialize="windowedapplication1_initializeHandler(event)">
 	<fx:Script>
 		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.managers.CursorManager;
+			
 			import commands.CreateQuadCommand;
 			import commands.DeleteQuadCommand;
 			import commands.DuplicateQuadCommand;
+			import commands.ExportLevelCommand;
 			import commands.LoadLevelCommand;
 			import commands.MoveQuadDepthCommand;
 			import commands.SaveLevelCommand;
@@ -23,21 +27,29 @@
 			
 			private var loadLevelCommand:LoadLevelCommand;
 			private var saveLevelCommand:SaveLevelCommand;
+			private var exportLevelCommand:ExportLevelCommand;
 			
 			
 			[Inject]
 			public var uiModel:UIModel;
 			
-			protected function windowedapplication1_keyDownHandler(event:KeyboardEvent):void {
+			protected function myKeyDownHandler(event:KeyboardEvent):void {
 				if (event.keyCode == Keyboard.SPACE) {
 					uiModel.setIsPanning(true);
+					event.stopImmediatePropagation();
 				}
 			}
 			
-			protected function windowedapplication1_keyUpHandler(event:KeyboardEvent):void {
+			protected function myKeyUpHandler(event:KeyboardEvent):void {
 				if (event.keyCode == Keyboard.SPACE) {
 					uiModel.setIsPanning(false);
+					event.stopImmediatePropagation();
 				}
+			}
+			
+			protected function windowedapplication1_initializeHandler(event:FlexEvent):void {
+				addEventListener(KeyboardEvent.KEY_DOWN, myKeyDownHandler, true);
+				addEventListener(KeyboardEvent.KEY_UP, myKeyUpHandler, true);
 			}
 			
 		]]>

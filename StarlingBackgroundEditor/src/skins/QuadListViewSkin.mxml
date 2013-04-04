@@ -23,6 +23,7 @@
 			<s:Button label="Open" id="openButton"/>
 			<s:Button label="Save" id="saveButton" enabled="{Boolean(hostComponent.saveModel.file)}"/>
 			<s:Button label="SaveAs..." id="saveAsButton"/>
+			<s:Button label="Export" id="exportButton"/>
 		</s:FormItem>
 		
 		<s:FormHeading label="Display"/>

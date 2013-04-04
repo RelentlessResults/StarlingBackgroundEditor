@@ -12,14 +12,22 @@
 				mouseUp="itemrenderer1_mouseUpHandler(event)">
 	<fx:Script>
 		<![CDATA[
+			import models.UIModel;
+			
 			import vo.QuadVO;
 			
+			public var uiModel:UIModel;
+			
 			protected function itemrenderer1_mouseDownHandler(event:MouseEvent):void {
+				if (uiModel.isPanning)
+					return;
 				event.stopImmediatePropagation();
 				this.startDrag();
 			}
 			
 			protected function itemrenderer1_mouseUpHandler(event:MouseEvent):void {
+				if (!this.dragging)
+					return;
 				var pos:Point = new Point(this.x, this.y);
 				data.x = pos.x;
 				data.y = pos.y;

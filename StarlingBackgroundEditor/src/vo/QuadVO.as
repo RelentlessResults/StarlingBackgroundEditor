@@ -18,5 +18,25 @@ package vo {
 		public var alphaB:Number = 1;
 		public var alphaC:Number = 1;
 		public var alphaD:Number = 1;
+		
+		private function get rotationRadians():Number {
+			return Math.PI*rotation/180.0;
+		}
+		
+		private function get labelWithoutExtension():String {
+			return label.substr(0, label.lastIndexOf("."));
+		}
+		
+		public function toJSON(k):* {
+			return {
+				"label":labelWithoutExtension,
+				"x":x,"y":y,
+				"width":width,"height":height,
+				"rotation":rotationRadians,
+				"alphaA":alphaA,
+				"alphaB":alphaB,
+				"alphaC":alphaC,
+				"alphaD":alphaD};
+		}
 	}
 }

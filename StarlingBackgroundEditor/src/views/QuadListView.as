@@ -1,6 +1,5 @@
 package views {
 	
-	import flash.events.Event;
 	import flash.events.FileListEvent;
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
@@ -14,6 +13,7 @@ package views {
 	import messages.CreateQuadMessage;
 	import messages.DeleteQuadMessage;
 	import messages.DuplicateQuadMessage;
+	import messages.ExportLevelMessage;
 	import messages.LoadLevelMessage;
 	import messages.SaveLevelMessage;
 	
@@ -35,6 +35,8 @@ package views {
 		public var saveButton:Button;
 		[SkinPart]
 		public var saveAsButton:Button;
+		[SkinPart]
+		public var exportButton:Button;
 		
 		[SkinPart]
 		public var addQuadButton:Button;
@@ -84,19 +86,9 @@ package views {
 				saveButton.addEventListener(MouseEvent.CLICK, handleSaveClick);
 			} else if (instance == saveAsButton) {
 				saveAsButton.addEventListener(MouseEvent.CLICK, handleSaveAsClick);
+			} else if (instance == exportButton) {
+				exportButton.addEventListener(MouseEvent.CLICK, handleExportClick);
 			}
-		}
-		
-		protected function handleSaveAsClick(event:MouseEvent):void {
-			dispatch(new SaveLevelMessage(SaveLevelMessage.SAVE_AS_NEW));
-		}
-		
-		protected function handleSaveClick(event:MouseEvent):void {
-			dispatch(new SaveLevelMessage(SaveLevelMessage.SAVE_EXISTING));
-		}
-		
-		protected function handleOpenClick(event:MouseEvent):void {
-			dispatch(new LoadLevelMessage());
 		}
 		
 		protected override function partRemoved(partName:String, instance:Object):void {
@@ -114,9 +106,28 @@ package views {
 				saveButton.removeEventListener(MouseEvent.CLICK, handleSaveClick);
 			} else if (instance == saveAsButton) {
 				saveAsButton.removeEventListener(MouseEvent.CLICK, handleSaveAsClick);
+			} else if (instance == exportButton) {
+				exportButton.removeEventListener(MouseEvent.CLICK, handleExportClick);
 			}
 			super.partRemoved(partName, instance);
 		}
+		
+		protected function handleExportClick(event:MouseEvent):void {
+			dispatch(new ExportLevelMessage());
+		}
+		
+		protected function handleSaveAsClick(event:MouseEvent):void {
+			dispatch(new SaveLevelMessage(SaveLevelMessage.SAVE_AS_NEW));
+		}
+		
+		protected function handleSaveClick(event:MouseEvent):void {
+			dispatch(new SaveLevelMessage(SaveLevelMessage.SAVE_EXISTING));
+		}
+		
+		protected function handleOpenClick(event:MouseEvent):void {
+			dispatch(new LoadLevelMessage());
+		}
+
 		
 		protected function handleDuplicateQuadClick(event:MouseEvent):void {
 			dispatch(new DuplicateQuadMessage(list.selectedItem as QuadVO));

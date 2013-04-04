@@ -5,7 +5,10 @@ package views {
 	import spark.components.Group;
 	import spark.components.supportClasses.SkinnableComponent;
 	
+	import events.UIModelEvent;
+	
 	import models.QuadModel;
+	import models.UIModel;
 	
 	import org.spicefactory.parsley.view.Configure;
 	
@@ -17,6 +20,16 @@ package views {
 		[Inject]
 		[Bindable]
 		public var quadModel:QuadModel;
+		
+		[Inject]
+		[Bindable]
+		public var uiModel:UIModel;
+		
+		[MessageHandler(type="events.UIModelEvent",selector="isPanningChange")]
+		public function handleIsPanningChange(e:UIModelEvent):void {
+			this.useHandCursor = uiModel.isPanning;
+			this.buttonMode = uiModel.isPanning;
+		}
 		
 		public function CanvasView() {
 			super();
